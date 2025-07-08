@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Test Enhanced Text Field Translation",
+			"type": "shell",
+			"command": "Start-Process",
+			"args": [
+				"enhanced-text-field-test.html"
+			],
+			"group": "test",
+			"isBackground": false
+		}
+	]
+}

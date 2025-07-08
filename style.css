@@ -1625,5 +1625,105 @@
   color: var(--sa-secondary-text);
 }
 
-/* Smooth theme transitions */
+/* Enhanced Text Field Translation Styles */
+
+/* Ensure field wrappers don't break layout */
+.textmind-field-wrapper input,
+.textmind-field-wrapper textarea {
+    padding-right: 40px !important; /* Make room for translation button */
+}
+
+/* Improved button positioning for various field types */
+.textmind-field-wrapper {
+    position: relative !important;
+}
+
+.textmind-field-wrapper input[type="email"],
+.textmind-field-wrapper input[type="search"],
+.textmind-field-wrapper input[type="url"],
+.textmind-field-wrapper input[type="tel"] {
+    padding-right: 40px !important;
+}
+
+/* Handle contenteditable elements */
+.textmind-field-wrapper [contenteditable="true"] {
+    position: relative;
+    min-height: 20px;
+}
+
+/* Improved popup positioning */
+.textmind-translation-popup {
+    /* Enhanced shadow for better visibility */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Smooth animations */
+.textmind-translate-btn {
+    animation: fadeInScale 0.2s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* Ensure popup is above other elements */
+.textmind-translation-popup {
+    z-index: 2147483647 !important; /* Maximum z-index */
+}
+
+/* Handle conflicts with common CSS frameworks */
+.textmind-translation-popup * {
+    box-sizing: border-box !important;
+    margin: 0 !important;
+}
+
+.textmind-translation-popup h3,
+.textmind-translation-popup label,
+.textmind-translation-popup div,
+.textmind-translation-popup button,
+.textmind-translation-popup input {
+    margin: revert !important;
+}
+
+/* Accessibility improvements */
+.textmind-translate-btn:focus,
+.textmind-btn:focus,
+.textmind-close-btn:focus {
+    outline: 2px solid var(--sa-accent, #3b82f6) !important;
+    outline-offset: 2px !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .textmind-translation-popup {
+        border-width: 2px !important;
+    }
+    
+    .textmind-translate-btn {
+        border: 2px solid currentColor !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .textmind-translate-btn,
+    .textmind-translation-popup,
+    .textmind-language-dropdown {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .spinning {
+        animation: none !important;
+    }
+}
 

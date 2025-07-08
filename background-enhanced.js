@@ -116,6 +116,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
         return true; // Keep message channel open for async response
     }
+
+    // Handle text translation request
+    if (request.action === 'translateText') {
+        handleTextTranslation(request, sendResponse);
+        return true; // Keep message channel open for async response
+    }
 });
 
 // Function to crop an image using OffscreenCanvas
@@ -155,4 +161,307 @@ async function cropImageOffscreen(dataUrl, area) {
         console.error('Error in cropImageOffscreen:', error);
         throw error;
     }
+}
+
+// Handle text translation requests
+async function handleTextTranslation(request, sendResponse) {
+    try {
+        console.log('Handling text translation request:', request);
+        
+        // Get AI configuration
+        const result = await new Promise((resolve) => {
+            chrome.storage.sync.get([
+                'selectedProvider',
+                'openaiApiKey', 
+                'claudeApiKey', 
+                'geminiApiKey',
+                'customApiKey',
+                'customApiUrl',
+                'customModelName',
+                'perplexityApiKey',
+                'groqApiKey',
+                'deepseekApiKey',
+                'xaiApiKey'
+            ], resolve);
+        });
+
+        const provider = result.selectedProvider;
+        if (!provider) {
+            throw new Error('No AI provider selected. Please configure an AI provider in the extension settings.');
+        }
+
+        // Prepare translation prompt
+        const prompt = `Translate the following text to ${request.languageName}. Provide only the translation without any additional commentary or explanation:
+
+"${request.text}"`;
+
+        let translation;
+
+        // Handle different providers
+        switch (provider) {
+            case 'openai':
+                if (!result.openaiApiKey) {
+                    throw new Error('OpenAI API key not configured');
+                }
+                translation = await translateWithOpenAI(prompt, result.openaiApiKey);
+                break;
+            
+            case 'claude':
+                if (!result.claudeApiKey) {
+                    throw new Error('Claude API key not configured');
+                }
+                translation = await translateWithClaude(prompt, result.claudeApiKey);
+                break;
+            
+            case 'gemini':
+                if (!result.geminiApiKey) {
+                    throw new Error('Gemini API key not configured');
+                }
+                translation = await translateWithGemini(prompt, result.geminiApiKey);
+                break;
+            
+            case 'perplexity':
+                if (!result.perplexityApiKey) {
+                    throw new Error('Perplexity API key not configured');
+                }
+                translation = await translateWithPerplexity(prompt, result.perplexityApiKey);
+                break;
+            
+            case 'groq':
+                if (!result.groqApiKey) {
+                    throw new Error('Groq API key not configured');
+                }
+                translation = await translateWithGroq(prompt, result.groqApiKey);
+                break;
+            
+            case 'deepseek':
+                if (!result.deepseekApiKey) {
+                    throw new Error('DeepSeek API key not configured');
+                }
+                translation = await translateWithDeepSeek(prompt, result.deepseekApiKey);
+                break;
+            
+            case 'xai':
+                if (!result.xaiApiKey) {
+                    throw new Error('xAI API key not configured');
+                }
+                translation = await translateWithXAI(prompt, result.xaiApiKey);
+                break;
+            
+            case 'custom':
+                if (!result.customApiKey || !result.customApiUrl) {
+                    throw new Error('Custom API configuration incomplete');
+                }
+                translation = await translateWithCustom(prompt, result.customApiKey, result.customApiUrl, result.customModelName);
+                break;
+            
+            default:
+                throw new Error(`Unsupported provider: ${provider}`);
+        }
+
+        sendResponse({
+            success: true,
+            translation: translation.trim()
+        });
+
+    } catch (error) {
+        console.error('Translation error:', error);
+        sendResponse({
+            success: false,
+            error: error.message
+        });
+    }
+}
+
+// Translation functions for different providers
+async function translateWithOpenAI(prompt, apiKey) {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            model: 'gpt-3.5-turbo',
+            messages: [{ role: 'user', content: prompt }],
+            max_tokens: 500,
+            temperature: 0.1
+        })
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error?.message || 'OpenAI API request failed');
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+}
+
+async function translateWithClaude(prompt, apiKey) {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey,
+            'anthropic-version': '2023-06-01'
+        },
+        body: JSON.stringify({
+            model: 'claude-3-haiku-20240307',
+            max_tokens: 500,
+            messages: [{ role: 'user', content: prompt }]
+        })
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error?.message || 'Claude API request failed');
+    }
+
+    const data = await response.json();
+    return data.content[0].text;
+}
+
+async function translateWithGemini(prompt, apiKey) {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+                maxOutputTokens: 500,
+                temperature: 0.1
+            }
+        })
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error?.message || 'Gemini API request failed');
+    }
+
+    const data = await response.json();
+    return data.candidates[0].content.parts[0].text;
+}
+
+async function translateWithPerplexity(prompt, apiKey) {
+    const response = await fetch('https://api.perplexity.ai/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            model: 'llama-3.1-sonar-small-128k-online',
+            messages: [{ role: 'user', content: prompt }],
+            max_tokens: 500,
+            temperature: 0.1
+        })
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error?.message || 'Perplexity API request failed');
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+}
+
+async function translateWithGroq(prompt, apiKey) {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            model: 'llama3-8b-8192',
+            messages: [{ role: 'user', content: prompt }],
+            max_tokens: 500,
+            temperature: 0.1
+        })
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error?.message || 'Groq API request failed');
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+}
+
+async function translateWithDeepSeek(prompt, apiKey) {
+    const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            model: 'deepseek-chat',
+            messages: [{ role: 'user', content: prompt }],
+            max_tokens: 500,
+            temperature: 0.1
+        })
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error?.message || 'DeepSeek API request failed');
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+}
+
+async function translateWithXAI(prompt, apiKey) {
+    const response = await fetch('https://api.x.ai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            model: 'grok-beta',
+            messages: [{ role: 'user', content: prompt }],
+            max_tokens: 500,
+            temperature: 0.1
+        })
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error?.message || 'xAI API request failed');
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+}
+
+async function translateWithCustom(prompt, apiKey, apiUrl, modelName) {
+    const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            model: modelName || 'gpt-3.5-turbo',
+            messages: [{ role: 'user', content: prompt }],
+            max_tokens: 500,
+            temperature: 0.1
+        })
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error?.message || 'Custom API request failed');
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
 }
