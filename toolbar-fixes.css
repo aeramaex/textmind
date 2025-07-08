@@ -1,0 +1,429 @@
+/* Comprehensive Toolbar Style Fixes */
+/* This file ensures all toolbar styles are properly applied and consistent */
+
+/* Force tooltip styles to be applied with higher specificity */
+#select-act-tooltip {
+  position: fixed !important;
+  background-color: var(--sa-primary-bg, #ffffff) !important;
+  color: var(--sa-secondary-text, #333333) !important;
+  border: 1px solid var(--sa-border-color, #e5e7eb) !important;
+  border-radius: 8px !important;
+  box-shadow: var(--sa-shadow, 0 4px 12px rgba(0, 0, 0, 0.1)) !important;
+  z-index: 2147483647 !important;
+  font-family: var(--sa-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif) !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.2s ease-in-out, transform 0.15s ease-out, visibility 0s linear 0.2s, max-height 0.2s ease-in-out !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transform: scale(0.95) !important;
+  max-height: var(--sa-tooltip-max-height-collapsed, 40px) !important;
+  overflow: hidden !important;
+  width: var(--sa-tooltip-width, 320px) !important;
+}
+
+#select-act-tooltip.sa-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(1) !important;
+  transition: opacity 0.2s ease-in-out, transform 0.15s ease-out, max-height 0.2s ease-in-out !important;
+}
+
+/* Ensure button container is properly styled */
+#select-act-tooltip-buttons-default {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 2px !important;
+  padding: 0 4px !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  min-height: 32px !important;
+}
+
+/* Force button styles to be applied */
+.sa-tooltip-button {
+  background-color: transparent !important;
+  color: var(--sa-secondary-text, #333333) !important;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 4px 6px !important;
+  cursor: pointer !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  font-family: var(--sa-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+  user-select: none !important;
+  line-height: 1.2 !important;
+  min-height: 20px !important;
+}
+
+.sa-tooltip-button:hover {
+  background-color: var(--sa-accent, #2563eb) !important;
+  color: white !important;
+  transform: translateY(-1px) !important;
+}
+
+.sa-tooltip-button:active {
+  transform: translateY(0) !important;
+}
+
+.sa-tooltip-button:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.sa-tooltip-button:disabled:hover {
+  background-color: transparent !important;
+  color: var(--sa-secondary-text, #333333) !important;
+  transform: none !important;
+}
+
+/* Icon styles */
+.sa-tooltip-button .sa-icon {
+  width: 14px !important;
+  height: 14px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+/* Input container styles */
+#select-act-tooltip-input-container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 4px !important;
+  min-height: 32px !important;
+}
+
+.sa-input-button {
+  flex-shrink: 0 !important;
+  padding: 4px 6px !important;
+  min-width: 24px !important;
+}
+
+#select-act-tooltip-input {
+  flex: 1 !important;
+  min-width: 0 !important;
+  padding: 4px 8px !important;
+  border: 1px solid var(--sa-border-color, #e5e7eb) !important;
+  border-radius: 4px !important;
+  background-color: var(--sa-primary-bg, #ffffff) !important;
+  color: var(--sa-secondary-text, #333333) !important;
+  font-size: 12px !important;
+  font-family: var(--sa-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif) !important;
+  resize: none !important;
+  outline: none !important;
+  min-height: 24px !important;
+  max-height: 80px !important;
+}
+
+#select-act-tooltip-input:focus {
+  border-color: var(--sa-accent, #2563eb) !important;
+  box-shadow: 0 0 0 2px rgba(var(--sa-accent-rgb, 37, 99, 235), 0.2) !important;
+}
+
+/* Output area styles */
+#select-act-tooltip-output {
+  padding: 8px !important;
+  background-color: var(--sa-primary-bg, #ffffff) !important;
+  color: var(--sa-secondary-text, #333333) !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  max-height: 200px !important;
+  overflow-y: auto !important;
+  border-radius: 4px !important;
+  margin: 4px !important;
+  border: 1px solid var(--sa-border-color, #e5e7eb) !important;
+}
+
+/* Footer styles */
+#select-act-tooltip-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 4px 12px !important;
+  border-top: none !important;
+  background: transparent !important;
+  min-height: 20px !important;
+  gap: 8px !important;
+}
+
+#select-act-tooltip-footer .sa-tooltip-button {
+  padding: 2px 6px !important;
+  height: 24px !important;
+  order: 1 !important;
+}
+
+/* Powered by section */
+.sa-powered-by {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  font-size: 10px !important;
+  color: var(--sa-secondary-text, #333333) !important;
+  opacity: 0.7 !important;
+  order: 2 !important;
+}
+
+.sa-gemini-logo {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+/* Loading spinner */
+.sa-spinner {
+  width: 20px !important;
+  height: 20px !important;
+  border: 2px solid var(--sa-border-color, #e5e7eb) !important;
+  border-top: 2px solid var(--sa-accent, #2563eb) !important;
+  border-radius: 50% !important;
+  animation: spin 1s linear infinite !important;
+}
+
+.sa-spinner-small {
+  width: 16px !important;
+  height: 16px !important;
+  border-width: 1.5px !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Loading overlay */
+#select-act-tooltip-loading-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: rgba(var(--sa-accent-rgb, 37, 99, 235), 0.05) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10 !important;
+}
+
+/* Chat dock styles */
+#select-act-chat-dock {
+  position: fixed !important;
+  right: 20px !important;
+  top: 20px !important;
+  width: 400px !important;
+  height: 500px !important;
+  background-color: var(--sa-chat-bg, #f9f9f9) !important;
+  border: 1px solid var(--sa-chat-border-color, #dee2e6) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--sa-shadow, 0 4px 12px rgba(0, 0, 0, 0.1)) !important;
+  z-index: 2147483646 !important;
+  font-family: var(--sa-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: scale(0.95) !important;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s !important;
+}
+
+#select-act-chat-dock.sa-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(1) !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+/* Chat header */
+#sa-chat-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 8px 12px !important;
+  background: var(--sa-chat-header-bg, #f0f2f5) !important;
+  border-bottom: 1px solid var(--sa-chat-border-color, #dee2e6) !important;
+  border-radius: 12px 12px 0 0 !important;
+  cursor: grab !important;
+}
+
+#sa-chat-header:active {
+  cursor: grabbing !important;
+}
+
+.sa-chat-title-container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.sa-chat-logo {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+#sa-chat-title {
+  font-weight: 500 !important;
+  color: var(--sa-accent, #2563eb) !important;
+  font-size: 14px !important;
+}
+
+.sa-chat-header-buttons {
+  display: flex !important;
+  gap: 4px !important;
+}
+
+/* Chat history */
+#sa-chat-history {
+  flex: 1 !important;
+  padding: 12px !important;
+  overflow-y: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+/* Chat messages */
+.sa-chat-message {
+  position: relative !important;
+  margin-bottom: 8px !important;
+  margin-top: 8px !important;
+  max-width: 85% !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  padding: 8px 12px !important;
+  border-radius: 12px !important;
+  word-wrap: break-word !important;
+}
+
+.sa-chat-message.sa-user {
+  background: var(--sa-chat-user-bubble-bg, #2563eb) !important;
+  color: var(--sa-chat-user-bubble-text, #ffffff) !important;
+  margin-left: auto !important;
+  margin-right: 5px !important;
+  border-radius: 12px 12px 0 12px !important;
+}
+
+.sa-chat-message.sa-ai {
+  background: var(--sa-chat-ai-bubble-bg, #e9ecef) !important;
+  color: var(--sa-chat-ai-bubble-text, #212529) !important;
+  margin-right: auto !important;
+  margin-left: 5px !important;
+  border-radius: 12px 12px 12px 0 !important;
+}
+
+.sa-chat-message.sa-system {
+  background: var(--sa-chat-system-bubble-bg, #f8f9fa) !important;
+  color: var(--sa-chat-system-bubble-text, #6c757d) !important;
+  margin: 7px auto !important;
+  max-width: 90% !important;
+  text-align: center !important;
+  font-size: 0.9em !important;
+  border-radius: 8px !important;
+  padding: 5px 8px !important;
+}
+
+/* Chat input area */
+#sa-chat-input-area {
+  padding: 12px !important;
+  border-top: 1px solid var(--sa-chat-border-color, #dee2e6) !important;
+  display: flex !important;
+  gap: 8px !important;
+  align-items: flex-end !important;
+}
+
+#sa-chat-input {
+  flex: 1 !important;
+  min-height: 36px !important;
+  max-height: 100px !important;
+  padding: 8px 12px !important;
+  border: 1px solid var(--sa-chat-border-color, #dee2e6) !important;
+  border-radius: 8px !important;
+  background-color: var(--sa-chat-input-bg, #ffffff) !important;
+  color: var(--sa-secondary-text, #333333) !important;
+  font-size: 14px !important;
+  font-family: var(--sa-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif) !important;
+  resize: none !important;
+  outline: none !important;
+}
+
+#sa-chat-input:focus {
+  border-color: var(--sa-accent, #2563eb) !important;
+  box-shadow: 0 0 0 2px rgba(var(--sa-accent-rgb, 37, 99, 235), 0.2) !important;
+}
+
+#sa-chat-send-btn {
+  flex-shrink: 0 !important;
+  min-width: 36px !important;
+  height: 36px !important;
+  background-color: var(--sa-accent, #2563eb) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+}
+
+#sa-chat-send-btn:hover {
+  background-color: var(--sa-button-hover-bg, #1d4ed8) !important;
+  transform: translateY(-1px) !important;
+}
+
+#sa-chat-send-btn:active {
+  transform: translateY(0) !important;
+}
+
+#sa-chat-send-btn:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* Force display for elements that might be hidden */
+#select-act-tooltip.sa-tooltip-enhanced {
+  display: flex !important;
+}
+
+#select-act-tooltip.sa-visible.sa-tooltip-enhanced {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ensure button text is visible */
+.sa-tooltip-button span {
+  display: inline !important;
+}
+
+/* Make sure icons don't disappear */
+.sa-tooltip-button svg {
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+/* Responsive design fixes */
+@media (max-width: 480px) {
+  #select-act-chat-dock {
+    right: 10px !important;
+    left: 10px !important;
+    width: auto !important;
+  }
+  
+  #select-act-tooltip {
+    max-width: calc(100vw - 20px) !important;
+  }
+}

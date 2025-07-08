@@ -1,0 +1,22 @@
+{
+  "name": "textmind-pro-chrome-extension",
+  "version": "2.0.0",
+  "description": "Professional AI-powered text assistant Chrome extension with multi-provider support for OpenAI, Claude, Gemini, and custom APIs.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chrome-extension",
+    "ai",
+    "context-menu",
+    "tooltip",
+    "text-selection",
+    "productivity"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "terser": "^5.41.0"
+  }
+}

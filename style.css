@@ -1,0 +1,1629 @@
+:root {
+  /* Light mode colors */
+  --sa-primary-bg: #ffffff; /* White background */
+  --sa-secondary-text: #333333;
+  --sa-accent: #007BFF; /* Light blue primary color */
+  --sa-accent-rgb: 0, 123, 255;
+  --sa-border-color: #e0e0e0; /* Lighter border */
+  --sa-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Specific shadow */
+  --sa-tooltip-width: 320px; /* Fixed width */
+  --sa-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* System UI font stack */
+  --sa-input-height: 28px; /* Reduced height for input elements */
+  --sa-tooltip-max-height-collapsed: 40px; /* Reduced max height for default state */
+
+  /* Chat Dock Specific Colors */
+  --sa-chat-bg: #f9f9f9; /* Lighter background for chat dock */
+  --sa-chat-header-bg: #f0f2f5; /* Slightly darker header */
+  --sa-chat-input-bg: #ffffff;
+  --sa-chat-user-bubble-bg: #007bff; /* Primary accent for user messages */
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #e9ecef; /* Lighter grey for AI messages */
+  --sa-chat-ai-bubble-text: #212529; /* Darker text for AI messages for contrast */
+  --sa-chat-system-bubble-bg: #f8f9fa;
+  --sa-chat-system-bubble-text: #6c757d;
+  --sa-chat-border-color: #dee2e6;
+}
+
+/* Dark mode colors */
+[data-theme="dark"] {
+  --sa-primary-bg: #1f2937;
+  --sa-secondary-text: #e5e7eb;
+  --sa-accent: #3b82f6;
+  --sa-accent-rgb: 59, 130, 246;
+  --sa-border-color: #374151;
+  --sa-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  /* Chat Dock Dark Colors */
+  --sa-chat-bg: #111827;
+  --sa-chat-header-bg: #1f2937;
+  --sa-chat-input-bg: #374151;
+  --sa-chat-user-bubble-bg: #3b82f6;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #374151;
+  --sa-chat-ai-bubble-text: #e5e7eb;
+  --sa-chat-system-bubble-bg: #111827;
+  --sa-chat-system-bubble-text: #9ca3af;
+  --sa-chat-border-color: #4b5563;
+  --sa-button-bg: #3b82f6;
+  --sa-button-hover-bg: #2563eb;
+  --sa-button-text: #ffffff;
+}
+
+/* Blue theme */
+[data-theme="dark-blue"] {
+  --sa-primary-bg: #0f172a;
+  --sa-secondary-text: #dbeafe;
+  --sa-accent: #60a5fa;
+  --sa-accent-rgb: 96, 165, 250;
+  --sa-border-color: #1e293b;
+  --sa-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  --sa-chat-bg: #0f172a;
+  --sa-chat-header-bg: #1e293b;
+  --sa-chat-input-bg: #1e293b;
+  --sa-chat-user-bubble-bg: #60a5fa;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #1e293b;
+  --sa-chat-ai-bubble-text: #dbeafe;
+  --sa-chat-system-bubble-bg: #0f172a;
+  --sa-chat-system-bubble-text: #93c5fd;
+  --sa-chat-border-color: #334155;
+  --sa-button-bg: #60a5fa;
+  --sa-button-hover-bg: #3b82f6;
+  --sa-button-text: #ffffff;
+}
+
+/* Purple theme */
+[data-theme="dark-purple"] {
+  --sa-primary-bg: #1e1b4b;
+  --sa-secondary-text: #f3e8ff;
+  --sa-accent: #a855f7;
+  --sa-accent-rgb: 168, 85, 247;
+  --sa-border-color: #312e81;
+  --sa-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
+  --sa-chat-bg: #1e1b4b;
+  --sa-chat-header-bg: #312e81;
+  --sa-chat-input-bg: #312e81;
+  --sa-chat-user-bubble-bg: #a855f7;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #312e81;
+  --sa-chat-ai-bubble-text: #f3e8ff;
+  --sa-chat-system-bubble-bg: #1e1b4b;
+  --sa-chat-system-bubble-text: #c4b5fd;
+  --sa-chat-border-color: #4c1d95;
+  --sa-button-bg: #a855f7;
+  --sa-button-hover-bg: #9333ea;
+  --sa-button-text: #ffffff;
+}
+
+/* Green theme */
+[data-theme="dark-green"] {
+  --sa-primary-bg: #052e16;
+  --sa-secondary-text: #f0fdf4;
+  --sa-accent: #22c55e;
+  --sa-accent-rgb: 34, 197, 94;
+  --sa-border-color: #14532d;
+  --sa-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+  --sa-chat-bg: #052e16;
+  --sa-chat-header-bg: #14532d;
+  --sa-chat-input-bg: #14532d;
+  --sa-chat-user-bubble-bg: #22c55e;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #14532d;
+  --sa-chat-ai-bubble-text: #f0fdf4;
+  --sa-chat-system-bubble-bg: #052e16;
+  --sa-chat-system-bubble-text: #86efac;
+  --sa-chat-border-color: #166534;
+  --sa-button-bg: #22c55e;
+  --sa-button-hover-bg: #16a34a;
+  --sa-button-text: #ffffff;
+}
+
+/* Orange theme */
+[data-theme="dark-orange"] {
+  --sa-primary-bg: #431407;
+  --sa-secondary-text: #fff7ed;
+  --sa-accent: #f97316;
+  --sa-accent-rgb: 249, 115, 22;
+  --sa-border-color: #9a3412;
+  --sa-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+  --sa-chat-bg: #431407;
+  --sa-chat-header-bg: #9a3412;
+  --sa-chat-input-bg: #9a3412;
+  --sa-chat-user-bubble-bg: #f97316;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #9a3412;
+  --sa-chat-ai-bubble-text: #fff7ed;
+  --sa-chat-system-bubble-bg: #431407;
+  --sa-chat-system-bubble-text: #fed7aa;
+  --sa-chat-border-color: #c2410c;
+  --sa-button-bg: #f97316;
+  --sa-button-hover-bg: #ea580c;
+  --sa-button-text: #ffffff;
+}
+
+/* Rose theme */
+[data-theme="dark-rose"] {
+  --sa-primary-bg: #4c0519;
+  --sa-secondary-text: #fff1f2;
+  --sa-accent: #f43f5e;
+  --sa-accent-rgb: 244, 63, 94;
+  --sa-border-color: #881337;
+  --sa-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);
+  --sa-chat-bg: #4c0519;
+  --sa-chat-header-bg: #881337;
+  --sa-chat-input-bg: #881337;
+  --sa-chat-user-bubble-bg: #f43f5e;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #881337;
+  --sa-chat-ai-bubble-text: #fff1f2;
+  --sa-chat-system-bubble-bg: #4c0519;
+  --sa-chat-system-bubble-text: #fda4af;
+  --sa-chat-border-color: #be185d;
+  --sa-button-bg: #f43f5e;
+  --sa-button-hover-bg: #e11d48;
+  --sa-button-text: #ffffff;
+}
+
+/* Minimal theme */
+[data-theme="dark-minimal"] {
+  --sa-primary-bg: #000000;
+  --sa-secondary-text: #ffffff;
+  --sa-accent: #ffffff;
+  --sa-accent-rgb: 255, 255, 255;
+  --sa-border-color: #1f2937;
+  --sa-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  --sa-chat-bg: #000000;
+  --sa-chat-header-bg: #1f2937;
+  --sa-chat-input-bg: #1f2937;
+  --sa-chat-user-bubble-bg: #ffffff;
+  --sa-chat-user-bubble-text: #000000;
+  --sa-chat-ai-bubble-bg: #1f2937;
+  --sa-chat-ai-bubble-text: #ffffff;
+  --sa-chat-system-bubble-bg: #000000;
+  --sa-chat-system-bubble-text: #9ca3af;
+  --sa-chat-border-color: #374151;
+  --sa-button-bg: #1f2937;
+  --sa-button-hover-bg: #374151;
+  --sa-button-text: #ffffff;
+}
+
+/* Base Tooltip Styles */
+#select-act-tooltip {
+  position: fixed;
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  border: 1px solid var(--sa-border-color);
+  border-radius: 8px; /* Slightly reduced border radius */
+  box-shadow: var(--sa-shadow);
+  z-index: 2147483647;
+  font-family: var(--sa-font-family);
+  font-size: 13px; /* Slightly smaller font size */
+  line-height: 1.4;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, transform 0.15s ease-out, visibility 0s linear 0.2s, max-height 0.2s ease-in-out;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  max-height: var(--sa-tooltip-max-height-collapsed);
+  overflow: hidden;
+  pointer-events: none; /* Allow clicks to pass through when hidden */
+}
+
+#select-act-tooltip.sa-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: opacity 0.2s ease-in-out, transform 0.15s ease-out, max-height 0.2s ease-in-out; /* Transition for showing */
+  pointer-events: auto;
+}
+
+/* Adjust max-height for different states */
+#select-act-tooltip.sa-input-mode,
+#select-act-tooltip.sa-output-mode {
+    max-height: 400px; /* Allow expansion for input/output */
+}
+#select-act-tooltip.sa-loading-mode {
+    max-height: var(--sa-tooltip-max-height-collapsed);
+    overflow: hidden;
+}
+
+
+/* Tooltip Sections */
+#select-act-tooltip-header,
+#select-act-tooltip-content,
+#select-act-tooltip-footer {
+  padding: 6px 10px; /* Reduced padding */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+#select-act-tooltip-header {
+  justify-content: flex-end;
+  border-bottom: none;
+  padding: 2px 8px;
+  display: none;
+  min-height: 15px;
+  gap: 8px;
+}
+
+#select-act-tooltip-content {
+  flex-grow: 1;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+#select-act-tooltip.sa-default-mode #select-act-tooltip-content,
+#select-act-tooltip.sa-input-mode #select-act-tooltip-content {
+    justify-content: flex-start;
+}
+
+#select-act-tooltip.sa-loading-mode #select-act-tooltip-content {
+    min-height: var(--sa-tooltip-max-height-collapsed);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#select-act-tooltip-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 12px;
+    border-top: none; /* Removed top border */
+    background: transparent;
+    min-height: 20px;
+    gap: 8px; /* Add gap between elements */
+}
+
+/* Adjust button size in footer */
+#select-act-tooltip-footer .sa-tooltip-button {
+    padding: 2px 6px; /* Reduced padding */
+    height: 24px; /* Match footer height */
+    order: 1; /* Ensure buttons are before powered-by */
+}
+
+
+/* Button Styles */
+.sa-tooltip-button {
+  background-color: transparent;
+  color: #555;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 6px; /* Reduced padding */
+  cursor: pointer;
+  font-size: 12px; /* Smaller font size */
+  line-height: 1;
+  transition: background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px; /* Reduced gap */
+  white-space: nowrap;
+  flex-shrink: 0;
+  height: var(--sa-input-height);
+  box-sizing: border-box;
+}
+
+.sa-tooltip-button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  color: var(--sa-accent);
+}
+
+.sa-tooltip-button:active:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+.sa-tooltip-button:disabled,
+.sa-tooltip-button.sa-button-copied {
+    opacity: 0.6;
+    cursor: default;
+    background-color: transparent;
+    color: #888;
+}
+.sa-tooltip-button.sa-button-copied .sa-icon {
+    color: #4CAF50;
+}
+
+
+.sa-tooltip-button .sa-icon {
+  width: 16px; /* Smaller icons */
+  height: 16px;
+  stroke-width: 1.8;
+  transition: color 0.15s ease;
+}
+
+
+/* Button Container (Default State) */
+#select-act-tooltip-buttons-default {
+  display: flex;
+  gap: 4px; /* Reduced gap */
+  width: 100%;
+  justify-content: space-between; /* Changed to space-between */
+  align-items: center;
+  flex-wrap: nowrap;
+  min-height: var(--sa-input-height);
+  padding: 0 2px; /* Added small padding */
+}
+
+
+/* Input State Styles (Horizontal Layout) */
+#select-act-tooltip-input-container {
+  display: none;
+  width: 100%;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 2px 0;
+}
+
+
+#select-act-tooltip.sa-input-mode #select-act-tooltip-content {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    align-items: stretch;
+}
+
+#select-act-tooltip.sa-input-mode #select-act-tooltip-header {
+    display: none;
+}
+
+
+#select-act-tooltip-input {
+  flex-grow: 1;
+  border: 1px solid var(--sa-border-color);
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-family: inherit;
+  font-size: 12px;
+  resize: none;
+  min-height: var(--sa-input-height);
+  max-height: 100px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  line-height: 1.4;
+  color: #000000; /* Added black text color */
+}
+#select-act-tooltip-input:focus {
+    outline: none;
+    border-color: var(--sa-accent);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+#select-act-tooltip-input-container .sa-tooltip-button {
+    padding: 6px;
+    align-self: flex-end;
+     height: var(--sa-input-height);
+}
+#select-act-tooltip-input-container .sa-tooltip-button .sa-icon {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Output State Styles */
+#select-act-tooltip-output {
+  display: none;
+  padding: 6px 0;
+  font-size: 14px; /* Increased from 12px */
+  line-height: 1.5;
+  color: var(--sa-secondary-text);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-y: auto;
+  max-height: 200px; /* Reduced max height */
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#select-act-tooltip.sa-output-mode #select-act-tooltip-header {
+    display: flex;
+}
+
+
+#select-act-tooltip.sa-output-mode #select-act-tooltip-content {
+    padding-top: 0;
+    padding-bottom: 0;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+
+/* Loading State Overlay Styles */
+#select-act-tooltip-loading-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(var(--sa-accent-rgb), 0.05);
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border-radius: inherit;
+}
+
+#select-act-tooltip.sa-loading-mode #select-act-tooltip-content > *:not(#select-act-tooltip-loading-overlay) {
+    display: none;
+}
+
+#select-act-tooltip.sa-loading-mode #select-act-tooltip-header,
+#select-act-tooltip.sa-loading-mode #select-act-tooltip-footer {
+    display: none;
+}
+
+.sa-spinner {
+    border: 2px solid #f1f5f9; /* Thinner border */
+    border-top: 2px solid var(--sa-accent);
+    border-radius: 50%;
+    width: 20px; /* Smaller spinner */
+    height: 20px;
+    animation: sa-spin 0.8s linear infinite;
+}
+
+.sa-spinner-small { /* For buttons */
+    width: 18px;
+    height: 18px;
+    border-width: 2px;
+}
+
+
+@keyframes sa-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#select-act-tooltip.sa-loading-mode #select-act-tooltip-content {
+    min-height: var(--sa-tooltip-max-height-collapsed);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Header elements */
+#sa-tooltip-title {
+    display: none;
+}
+
+
+/* Docked Chat Window Styles */
+#select-act-chat-dock {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 360px;
+  height: 550px;
+  background-color: var(--sa-chat-bg);
+  border: 1px solid var(--sa-chat-border-color);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  z-index: 2147483646;
+  font-family: var(--sa-font-family);
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out, visibility 0s linear 0.25s;
+  resize: both; /* Enable resize */
+  min-width: 300px; /* Minimum width */
+  min-height: 400px; /* Minimum height */
+  max-width: 800px; /* Maximum width */
+  max-height: 90vh; /* Maximum height */
+}
+
+#select-act-chat-dock.sa-visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+
+#sa-chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px; /* Increased padding */
+  border-bottom: 1px solid var(--sa-chat-border-color);
+  background-color: var(--sa-chat-header-bg);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+#sa-chat-header:active #sa-chat-drag-handle { /* Apply grabbing to handle during drag */
+    cursor: grabbing;
+}
+
+
+#sa-chat-title {
+  font-weight: 500;
+  color: var(--sa-secondary-text);
+  font-size: 15px;
+}
+
+#sa-chat-drag-handle {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    margin: -10px 0 -10px -15px; /* Extend clickable area to padding */
+    padding: 10px 0 10px 15px;
+}
+
+
+#sa-chat-drag-handle .sa-icon-move {
+    color: #888; /* Subtler move icon color */
+    margin-right: 8px; /* More space for icon */
+}
+
+
+#sa-chat-close-btn { /* Uses .sa-tooltip-button styles */
+   flex-shrink: 0;
+   color: #666; /* Subtler close icon color */
+}
+#sa-chat-close-btn:hover {
+    background-color: #e0e0e0; /* Consistent hover */
+    color: #333;
+}
+
+
+#sa-chat-history {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  background-color: var(--sa-chat-bg);
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+.sa-chat-message {
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+  line-height: 1.45;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  cursor: text;
+  position: relative;
+  margin: 4px 0;
+}
+
+.sa-chat-message.sa-user {
+  background-color: #1a73e8; /* Google blue */
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  margin-left: 20%;
+}
+
+.sa-chat-message.sa-ai {
+  background-color: #f1f3f4; /* Light grey */
+  color: #202124; /* Dark grey text */
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  margin-right: 20%;
+}
+
+.sa-chat-message.sa-system {
+  background-color: #f8f9fa;
+  color: #5f6368;
+  font-size: 0.85em;
+  align-self: center;
+  max-width: 90%;
+  text-align: center;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 8px 12px;
+  box-shadow: none;
+  margin: 8px 0;
+}
+
+/* Remove the strong tag styles since we're not using them anymore */
+.sa-chat-message strong {
+    display: none;
+}
+
+/* Update the dummy response style */
+.sa-dummy-response {
+    font-style: normal;
+    color: inherit;
+    border-left: none;
+    padding: 0;
+    margin: 0;
+    display: inline;
+    background-color: transparent;
+}
+
+/* Update the error response style */
+.sa-error-response {
+    font-style: normal;
+    color: #d93025; /* Google red */
+    border-left: none;
+    padding: 0;
+    margin: 0;
+    display: inline;
+    background-color: transparent;
+}
+
+/* Add subtle hover effect to messages */
+.sa-chat-message:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Update selection styles for better contrast */
+.sa-chat-message.sa-user::selection {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.sa-chat-message.sa-ai::selection {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: inherit;
+}
+
+#sa-chat-input-area {
+  display: flex;
+  padding: 12px 15px;
+  border-top: 1px solid var(--sa-chat-border-color);
+  gap: 10px;
+  background-color: var(--sa-chat-header-bg);
+  flex-shrink: 0;
+  align-items: flex-end;
+  position: relative;
+  z-index: 1;
+}
+
+#sa-chat-input {
+  flex-grow: 1;
+  border: 1px solid var(--sa-chat-border-color);
+  border-radius: 8px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: none;
+  min-height: 44px;
+  max-height: 120px;
+  overflow-y: auto;
+  line-height: 1.5;
+  background-color: var(--sa-chat-input-bg);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  color: #333333; /* Dark text color for better readability */
+}
+
+#sa-chat-input:focus {
+    outline: none;
+    border-color: var(--sa-accent);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+#sa-chat-input::placeholder {
+  color: #000000; /* Lighter color for placeholder text */
+  opacity: 1;
+}
+
+#sa-chat-input::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+#sa-chat-input::-webkit-scrollbar-thumb {
+  background-color: #bdc3c7;
+  border-radius: 3px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+#sa-chat-input::-webkit-scrollbar-thumb:hover {
+  background-color: #95a5a6;
+}
+
+#sa-chat-input::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+#sa-chat-send-btn {
+  background-color: var(--sa-accent);
+  color: white;
+  padding: 0;
+  flex-shrink: 0;
+  height: 44px;
+  width: 44px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  transition: background-color 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+#sa-chat-send-btn:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+#sa-chat-send-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#sa-chat-send-btn .sa-icon {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+  stroke: white;
+}
+
+/* Hide scrollbar by default */
+#sa-chat-input::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    display: none;
+}
+
+/* Show scrollbar only when content overflows */
+#sa-chat-input:not(:empty)::-webkit-scrollbar {
+    display: block;
+}
+
+#sa-chat-input::-webkit-scrollbar-thumb {
+  background-color: #bdc3c7;
+  border-radius: 3px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+#sa-chat-input::-webkit-scrollbar-thumb:hover {
+  background-color: #95a5a6;
+}
+
+#sa-chat-input::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Helper class to prevent selection observation */
+.sa-ignore-selection {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Ensure icons are vertically aligned */
+.sa-icon {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/* Scrollbar styling (Optional, for webkit browsers) */
+#select-act-tooltip-output::-webkit-scrollbar,
+#sa-chat-history::-webkit-scrollbar,
+#select-act-tooltip-input::-webkit-scrollbar,
+#sa-chat-input::-webkit-scrollbar {
+  width: 8px; /* Slightly wider scrollbar */
+  height: 8px;
+}
+
+#select-act-tooltip-output::-webkit-scrollbar-thumb,
+#sa-chat-history::-webkit-scrollbar-thumb,
+#select-act-tooltip-input::-webkit-scrollbar-thumb,
+#sa-chat-input::-webkit-scrollbar-thumb {
+  background-color: #bdc3c7; /* Softer grey */
+  border-radius: 4px;
+  border: 2px solid transparent; /* Create padding around thumb */
+  background-clip: padding-box;
+}
+#select-act-tooltip-output::-webkit-scrollbar-thumb:hover,
+#sa-chat-history::-webkit-scrollbar-thumb:hover,
+#select-act-tooltip-input::-webkit-scrollbar-thumb:hover,
+#sa-chat-input::-webkit-scrollbar-thumb:hover {
+  background-color: #95a5a6; /* Darker on hover */
+}
+
+
+#select-act-tooltip-output::-webkit-scrollbar-track,
+#sa-chat-history::-webkit-scrollbar-track,
+#select-act-tooltip-input::-webkit-scrollbar-track,
+#sa-chat-input::-webkit-scrollbar-track {
+   background-color: transparent; /* Transparent track */
+}
+
+/* Ensure button text and loader containers are styled for visibility toggling */
+.sa-btn-text, .sa-btn-loader {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Resize handle styles */
+#select-act-chat-dock::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 15px;
+  height: 15px;
+  cursor: se-resize;
+  background: linear-gradient(135deg, transparent 50%, var(--sa-border-color) 50%);
+  border-bottom-right-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#select-act-chat-dock:hover::after {
+  opacity: 1;
+}
+
+/* Gemini Branding Styles */
+.sa-powered-by {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #666;
+    margin-left: auto; /* Changed from margin-right to margin-left to push it to the right */
+    order: 2; /* Ensure it's at the end */
+}
+
+.sa-gemini-logo {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+#sa-chat-header .sa-gemini-logo {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+}
+
+#sa-chat-drag-handle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sa-chat-title-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sa-chat-logo {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+#sa-chat-title {
+    font-weight: 500;
+    color: #2563eb;
+}
+
+#select-act-tooltip-header > * {
+  flex-shrink: 0;
+}
+
+.sa-chat-header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#sa-chat-new-btn {
+    padding: 6px;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666; /* Default color */
+    transition: all 0.2s ease;
+}
+
+#sa-chat-new-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #2563eb; /* Primary blue color on hover */
+}
+
+#sa-chat-new-btn .sa-icon {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor; /* This ensures the icon inherits the text color */
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] #select-act-tooltip {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark"] #select-act-chat-dock {
+  background-color: var(--sa-chat-bg);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark"] .sa-tooltip-button {
+  color: var(--sa-secondary-text);
+  background-color: transparent;
+  border-color: var(--sa-border-color);
+}
+
+[data-theme="dark"] .sa-tooltip-button:hover {
+  background-color: var(--sa-border-color);
+  color: var(--sa-accent);
+}
+
+[data-theme="dark"] #sa-chat-header {
+  background-color: var(--sa-chat-header-bg);
+  border-bottom-color: var(--sa-chat-border-color);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark"] #sa-chat-input {
+  background-color: var(--sa-chat-input-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-chat-border-color);
+}
+
+[data-theme="dark"] #select-act-tooltip-input {
+  background-color: var(--sa-chat-input-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-border-color);
+}
+
+[data-theme="dark"] #select-act-tooltip-output {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark"] .sa-chat-message.sa-user {
+  background-color: var(--sa-chat-user-bubble-bg);
+  color: var(--sa-chat-user-bubble-text);
+}
+
+[data-theme="dark"] .sa-chat-message.sa-ai {
+  background-color: var(--sa-chat-ai-bubble-bg);
+  color: var(--sa-chat-ai-bubble-text);
+}
+
+[data-theme="dark"] .sa-chat-message.sa-system {
+  background-color: var(--sa-chat-system-bubble-bg);
+  color: var(--sa-chat-system-bubble-text);
+}
+
+[data-theme="dark"] .sa-spinner {
+  border-color: var(--sa-border-color) transparent var(--sa-border-color) transparent;
+}
+
+/* Enhanced Dark Mode Styles for Buttons and Interactive Elements */
+
+/* Tooltip buttons dark mode */
+[data-theme="dark"] .sa-tooltip-button {
+  background: var(--sa-border-color);
+  color: var(--sa-secondary-text);
+  border: 1px solid var(--sa-chat-border-color);
+}
+
+[data-theme="dark"] .sa-tooltip-button:hover {
+  background: var(--sa-accent);
+  color: white;
+  border-color: var(--sa-accent);
+}
+
+[data-theme="dark"] .sa-tooltip-button:active {
+  background: var(--sa-chat-ai-bubble-bg);
+}
+
+/* Input areas dark mode - FIXED: Only target extension elements */
+[data-theme="dark"] #select-act-tooltip textarea,
+[data-theme="dark"] #select-act-tooltip input[type="text"],
+[data-theme="dark"] #select-act-chat-dock textarea,
+[data-theme="dark"] #select-act-chat-dock input[type="text"] {
+  background-color: var(--sa-chat-input-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-chat-border-color);
+}
+
+[data-theme="dark"] #select-act-tooltip textarea:focus,
+[data-theme="dark"] #select-act-tooltip input[type="text"]:focus,
+[data-theme="dark"] #select-act-chat-dock textarea:focus,
+[data-theme="dark"] #select-act-chat-dock input[type="text"]:focus {
+  border-color: var(--sa-accent);
+  background-color: var(--sa-primary-bg);
+}
+
+[data-theme="dark"] #select-act-tooltip textarea::placeholder,
+[data-theme="dark"] #select-act-tooltip input[type="text"]::placeholder,
+[data-theme="dark"] #select-act-chat-dock textarea::placeholder,
+[data-theme="dark"] #select-act-chat-dock input[type="text"]::placeholder {
+  color: var(--sa-chat-system-bubble-text);
+}
+
+/* Loading spinner dark mode */
+[data-theme="dark"] .sa-spinner {
+  border: 2px solid var(--sa-border-color);
+  border-top: 2px solid var(--sa-accent);
+}
+
+[data-theme="dark"] .sa-spinner-small {
+  border: 1.5px solid var(--sa-border-color);
+  border-top: 1.5px solid var(--sa-accent);
+}
+
+/* Footer and branding dark mode */
+[data-theme="dark"] .sa-powered-by {
+  color: var(--sa-chat-system-bubble-text);
+}
+
+/* Copy button feedback dark mode */
+[data-theme="dark"] .sa-button-copied {
+  background-color: var(--sa-accent) !important;
+  color: white !important;
+}
+
+/* Scrollbar styling for dark mode */
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--sa-primary-bg);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--sa-border-color);
+  border-radius: 3px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--sa-chat-border-color);
+}
+
+/* Selection styling for dark mode */
+[data-theme="dark"] ::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: var(--sa-secondary-text);
+}
+
+/* Chat dock resize handle dark mode */
+[data-theme="dark"] #select-act-chat-dock::after {
+  background: linear-gradient(135deg, transparent 50%, var(--sa-chat-border-color) 50%);
+}
+
+/* Header elements dark mode */
+[data-theme="dark"] #sa-chat-title {
+  color: var(--sa-accent);
+}
+
+[data-theme="dark"] .sa-chat-title-container {
+  color: var(--sa-secondary-text);
+}
+
+/* New chat button dark mode */
+[data-theme="dark"] #sa-chat-new-btn {
+  color: var(--sa-chat-system-bubble-text);
+}
+
+[data-theme="dark"] #sa-chat-new-btn:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--sa-accent);
+}
+
+/* Chat input area dark mode */
+[data-theme="dark"] #sa-chat-input-area {
+  background-color: var(--sa-chat-header-bg);
+  border-top-color: var(--sa-chat-border-color);
+}
+
+/* Send button states dark mode */
+[data-theme="dark"] #sa-chat-send-btn {
+  background-color: var(--sa-accent);
+  color: white;
+}
+
+[data-theme="dark"] #sa-chat-send-btn:hover {
+  background-color: var(--sa-primary-hover, #2563eb);
+}
+
+[data-theme="dark"] #sa-chat-send-btn:disabled {
+  background-color: var(--sa-border-color);
+  color: var(--sa-chat-system-bubble-text);
+}
+
+/* Tooltip title and back button dark mode */
+[data-theme="dark"] #sa-tooltip-title {
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark"] #sa-tooltip-back-btn,
+[data-theme="dark"] #sa-tooltip-dock-btn,
+[data-theme="dark"] #sa-tooltip-close-btn-header {
+  background: transparent;
+  color: var(--sa-secondary-text);
+  border: none;
+}
+
+[data-theme="dark"] #sa-tooltip-back-btn:hover,
+[data-theme="dark"] #sa-tooltip-dock-btn:hover,
+[data-theme="dark"] #sa-tooltip-close-btn-header:hover {
+  background: var(--sa-border-color);
+  color: var(--sa-accent);
+}
+
+/* Footer styling dark mode */
+[data-theme="dark"] #select-act-tooltip-footer {
+  background-color: var(--sa-primary-bg);
+  border-top-color: var(--sa-border-color);
+}
+
+/* Ensure proper contrast for all text elements */
+[data-theme="dark"] #select-act-tooltip *,
+[data-theme="dark"] #select-act-chat-dock * {
+  color: inherit;
+}
+
+[data-theme="dark"] #select-act-tooltip-output {
+  color: var(--sa-secondary-text);
+}
+
+/* System message styling */
+[data-theme="dark"] .sa-chat-message.sa-system {
+  background-color: var(--sa-chat-system-bubble-bg);
+  color: var(--sa-chat-system-bubble-text);
+  border-left: 3px solid var(--sa-border-color);
+}
+
+/* Smooth theme transitions */
+
+/* Blue theme styles */
+[data-theme="dark-blue"] #select-act-tooltip {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-blue"] #select-act-chat-dock {
+  background-color: var(--sa-chat-bg);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-blue"] .sa-tooltip-button {
+  color: var(--sa-secondary-text);
+  background-color: var(--sa-button-bg);
+  border-color: var(--sa-border-color);
+}
+
+[data-theme="dark-blue"] .sa-tooltip-button:hover {
+  background: var(--sa-button-hover-bg);
+  color: var(--sa-button-text);
+  border-color: var(--sa-accent);
+}
+
+[data-theme="dark-blue"] #sa-chat-header {
+  background-color: var(--sa-chat-header-bg);
+  border-bottom-color: var(--sa-chat-border-color);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-blue"] #sa-chat-input,
+[data-theme="dark-blue"] #select-act-tooltip-input {
+  background-color: var(--sa-chat-input-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-chat-border-color);
+}
+
+[data-theme="dark-blue"] #select-act-tooltip-output {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-blue"] .sa-chat-message.sa-user {
+  background-color: var(--sa-chat-user-bubble-bg);
+  color: var(--sa-chat-user-bubble-text);
+}
+
+[data-theme="dark-blue"] .sa-chat-message.sa-ai {
+  background-color: var(--sa-chat-ai-bubble-bg);
+  color: var(--sa-chat-ai-bubble-text);
+}
+
+[data-theme="dark-blue"] .sa-chat-message.sa-system {
+  background-color: var(--sa-chat-system-bubble-bg);
+  color: var(--sa-chat-system-bubble-text);
+}
+
+[data-theme="dark-blue"] #sa-chat-title {
+  color: var(--sa-accent);
+}
+
+[data-theme="dark-blue"] #sa-chat-send-btn {
+  background-color: var(--sa-accent);
+  color: var(--sa-button-text);
+}
+
+/* Purple theme styles */
+[data-theme="dark-purple"] #select-act-tooltip {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-purple"] #select-act-chat-dock {
+  background-color: var(--sa-chat-bg);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-purple"] .sa-tooltip-button {
+  color: var(--sa-secondary-text);
+  background-color: var(--sa-button-bg);
+  border-color: var(--sa-border-color);
+}
+
+[data-theme="dark-purple"] .sa-tooltip-button:hover {
+  background: var(--sa-button-hover-bg);
+  color: var(--sa-button-text);
+  border-color: var(--sa-accent);
+}
+
+[data-theme="dark-purple"] #sa-chat-header {
+  background-color: var(--sa-chat-header-bg);
+  border-bottom-color: var(--sa-chat-border-color);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-purple"] #sa-chat-input,
+[data-theme="dark-purple"] #select-act-tooltip-input {
+  background-color: var(--sa-chat-input-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-chat-border-color);
+}
+
+[data-theme="dark-purple"] #select-act-tooltip-output {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-purple"] .sa-chat-message.sa-user {
+  background-color: var(--sa-chat-user-bubble-bg);
+  color: var(--sa-chat-user-bubble-text);
+}
+
+[data-theme="dark-purple"] .sa-chat-message.sa-ai {
+  background-color: var(--sa-chat-ai-bubble-bg);
+  color: var(--sa-chat-ai-bubble-text);
+}
+
+[data-theme="dark-purple"] .sa-chat-message.sa-system {
+  background-color: var(--sa-chat-system-bubble-bg);
+  color: var(--sa-chat-system-bubble-text);
+}
+
+[data-theme="dark-purple"] #sa-chat-title {
+  color: var(--sa-accent);
+}
+
+[data-theme="dark-purple"] #sa-chat-send-btn {
+  background-color: var(--sa-accent);
+  color: var(--sa-button-text);
+}
+
+/* Green theme styles */
+[data-theme="dark-green"] #select-act-tooltip {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-green"] #select-act-chat-dock {
+  background-color: var(--sa-chat-bg);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-green"] .sa-tooltip-button {
+  color: var(--sa-secondary-text);
+  background-color: var(--sa-button-bg);
+  border-color: var(--sa-border-color);
+}
+
+[data-theme="dark-green"] .sa-tooltip-button:hover {
+  background: var(--sa-button-hover-bg);
+  color: var(--sa-button-text);
+  border-color: var(--sa-accent);
+}
+
+[data-theme="dark-green"] #sa-chat-header {
+  background-color: var(--sa-chat-header-bg);
+  border-bottom-color: var(--sa-chat-border-color);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-green"] #sa-chat-input,
+[data-theme="dark-green"] #select-act-tooltip-input {
+  background-color: var(--sa-chat-input-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-chat-border-color);
+}
+
+[data-theme="dark-green"] #select-act-tooltip-output {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-green"] .sa-chat-message.sa-user {
+  background-color: var(--sa-chat-user-bubble-bg);
+  color: var(--sa-chat-user-bubble-text);
+}
+
+[data-theme="dark-green"] .sa-chat-message.sa-ai {
+  background-color: var(--sa-chat-ai-bubble-bg);
+  color: var(--sa-chat-ai-bubble-text);
+}
+
+[data-theme="dark-green"] .sa-chat-message.sa-system {
+  background-color: var(--sa-chat-system-bubble-bg);
+  color: var(--sa-chat-system-bubble-text);
+}
+
+[data-theme="dark-green"] #sa-chat-title {
+  color: var(--sa-accent);
+}
+
+[data-theme="dark-green"] #sa-chat-send-btn {
+  background-color: var(--sa-accent);
+  color: var(--sa-button-text);
+}
+
+/* Orange theme styles */
+[data-theme="dark-orange"] #select-act-tooltip {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-orange"] #select-act-chat-dock {
+  background-color: var(--sa-chat-bg);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-orange"] .sa-tooltip-button {
+  color: var(--sa-secondary-text);
+  background-color: var(--sa-button-bg);
+  border-color: var(--sa-border-color);
+}
+
+[data-theme="dark-orange"] .sa-tooltip-button:hover {
+  background: var(--sa-button-hover-bg);
+  color: var(--sa-button-text);
+  border-color: var(--sa-accent);
+}
+
+[data-theme="dark-orange"] #sa-chat-header {
+  background-color: var(--sa-chat-header-bg);
+  border-bottom-color: var(--sa-chat-border-color);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-orange"] #sa-chat-input,
+[data-theme="dark-orange"] #select-act-tooltip-input {
+  background-color: var(--sa-chat-input-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-chat-border-color);
+}
+
+[data-theme="dark-orange"] #select-act-tooltip-output {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-orange"] .sa-chat-message.sa-user {
+  background-color: var(--sa-chat-user-bubble-bg);
+  color: var(--sa-chat-user-bubble-text);
+}
+
+[data-theme="dark-orange"] .sa-chat-message.sa-ai {
+  background-color: var(--sa-chat-ai-bubble-bg);
+  color: var(--sa-chat-ai-bubble-text);
+}
+
+[data-theme="dark-orange"] .sa-chat-message.sa-system {
+  background-color: var(--sa-chat-system-bubble-bg);
+  color: var(--sa-chat-system-bubble-text);
+}
+
+[data-theme="dark-orange"] #sa-chat-title {
+  color: var(--sa-accent);
+}
+
+[data-theme="dark-orange"] #sa-chat-send-btn {
+  background-color: var(--sa-accent);
+  color: var(--sa-button-text);
+}
+
+/* Rose theme styles */
+[data-theme="dark-rose"] #select-act-tooltip {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-rose"] #select-act-chat-dock {
+  background-color: var(--sa-chat-bg);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-rose"] .sa-tooltip-button {
+  color: var(--sa-secondary-text);
+  background-color: var(--sa-button-bg);
+  border-color: var(--sa-border-color);
+}
+
+[data-theme="dark-rose"] .sa-tooltip-button:hover {
+  background: var(--sa-button-hover-bg);
+  color: var(--sa-button-text);
+  border-color: var(--sa-accent);
+}
+
+[data-theme="dark-rose"] #sa-chat-header {
+  background-color: var(--sa-chat-header-bg);
+  border-bottom-color: var(--sa-chat-border-color);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-rose"] #sa-chat-input,
+[data-theme="dark-rose"] #select-act-tooltip-input {
+  background-color: var(--sa-chat-input-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-chat-border-color);
+}
+
+[data-theme="dark-rose"] #select-act-tooltip-output {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-rose"] .sa-chat-message.sa-user {
+  background-color: var(--sa-chat-user-bubble-bg);
+  color: var(--sa-chat-user-bubble-text);
+}
+
+[data-theme="dark-rose"] .sa-chat-message.sa-ai {
+  background-color: var(--sa-chat-ai-bubble-bg);
+  color: var(--sa-chat-ai-bubble-text);
+}
+
+[data-theme="dark-rose"] .sa-chat-message.sa-system {
+  background-color: var(--sa-chat-system-bubble-bg);
+  color: var(--sa-chat-system-bubble-text);
+}
+
+[data-theme="dark-rose"] #sa-chat-title {
+  color: var(--sa-accent);
+}
+
+[data-theme="dark-rose"] #sa-chat-send-btn {
+  background-color: var(--sa-accent);
+  color: var(--sa-button-text);
+}
+
+/* Minimal theme styles */
+[data-theme="dark-minimal"] #select-act-tooltip {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-minimal"] #select-act-chat-dock {
+  background-color: var(--sa-chat-bg);
+  border-color: var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+}
+
+[data-theme="dark-minimal"] .sa-tooltip-button {
+  color: var(--sa-button-text);
+  background-color: var(--sa-button-bg);
+  border-color: var(--sa-border-color);
+}
+
+[data-theme="dark-minimal"] .sa-tooltip-button:hover {
+  background: var(--sa-button-hover-bg);
+  color: var(--sa-button-text);
+  border-color: var(--sa-accent);
+}
+
+[data-theme="dark-minimal"] #sa-chat-header {
+  background-color: var(--sa-chat-header-bg);
+  border-bottom-color: var(--sa-chat-border-color);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-minimal"] #sa-chat-input,
+[data-theme="dark-minimal"] #select-act-tooltip-input {
+  background-color: var(--sa-chat-input-bg);
+  color: var(--sa-secondary-text);
+  border-color: var(--sa-chat-border-color);
+}
+
+[data-theme="dark-minimal"] #select-act-tooltip-output {
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+}
+
+[data-theme="dark-minimal"] .sa-chat-message.sa-user {
+  background-color: var(--sa-chat-user-bubble-bg);
+  color: var(--sa-chat-user-bubble-text);
+}
+
+[data-theme="dark-minimal"] .sa-chat-message.sa-ai {
+  background-color: var(--sa-chat-ai-bubble-bg);
+  color: var(--sa-chat-ai-bubble-text);
+}
+
+[data-theme="dark-minimal"] .sa-chat-message.sa-system {
+  background-color: var(--sa-chat-system-bubble-bg);
+  color: var(--sa-chat-system-bubble-text);
+}
+
+[data-theme="dark-minimal"] #sa-chat-title {
+  color: var(--sa-accent);
+}
+
+[data-theme="dark-minimal"] #sa-chat-send-btn {
+  background-color: var(--sa-button-bg);
+  color: var(--sa-button-text);
+  border-color: var(--sa-button-bg);
+}
+
+[data-theme="dark-minimal"] .sa-powered-by {
+  color: var(--sa-secondary-text);
+}
+
+/* Smooth theme transitions */
+

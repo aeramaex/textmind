@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Field Translation Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .contenteditable {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            min-height: 50px;
+            border-radius: 4px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .instructions {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌐 Text Field Translation Feature Test</h1>
+    
+    <div class="instructions">
+        <h3>How to test:</h3>
+        <ol>
+            <li>Make sure the TextMind Pro extension is loaded and configured with an AI provider</li>
+            <li>Type some text in any of the fields below</li>
+            <li>Look for the 🌐 translation button that appears on the right side of the field</li>
+            <li>Click the button or use the keyboard shortcut <strong>Ctrl+Shift+T</strong></li>
+            <li>Select a target language and click "Translate"</li>
+            <li>Optionally click "Replace" to replace the original text with the translation</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>Text Input Fields</h2>
+        <input type="text" placeholder="Type some text here to test translation...">
+        <input type="email" placeholder="Enter an email with text to translate...">
+        <input type="search" placeholder="Search text that can be translated...">
+        <input type="url" placeholder="URL field with translatable text...">
+    </div>
+
+    <div class="test-section">
+        <h2>Textarea</h2>
+        <textarea placeholder="Enter a longer text here to test translation. You can write multiple sentences and see how the translation feature works with larger content."></textarea>
+    </div>
+
+    <div class="test-section">
+        <h2>Content Editable</h2>
+        <div class="contenteditable" contenteditable="true">
+            This is a content editable div. You can edit this text and test the translation feature.
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Sample Text to Copy</h2>
+        <p>Here are some sample texts in different languages you can copy and paste into the fields above:</p>
+        <ul>
+            <li><strong>English:</strong> Hello, how are you today? I hope you're having a wonderful day!</li>
+            <li><strong>Spanish:</strong> Hola, ¿cómo estás hoy? ¡Espero que tengas un día maravilloso!</li>
+            <li><strong>French:</strong> Bonjour, comment allez-vous aujourd'hui? J'espère que vous passez une merveilleuse journée!</li>
+            <li><strong>German:</strong> Hallo, wie geht es dir heute? Ich hoffe, du hast einen wunderbaren Tag!</li>
+            <li><strong>Japanese:</strong> こんにちは、今日はいかがですか？素晴らしい一日をお過ごしください！</li>
+        </ul>
+    </div>
+
+    <script>
+        // Add some dynamic content for testing
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Text Field Translation Test Page Loaded');
+            
+            // Add some sample text to fields after a delay to test dynamic content
+            setTimeout(() => {
+                const inputs = document.querySelectorAll('input[type="text"]');
+                if (inputs.length > 0) {
+                    inputs[0].value = 'This is sample text for testing translation.';
+                    inputs[0].dispatchEvent(new Event('input', { bubbles: true }));
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

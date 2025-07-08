@@ -1,0 +1,67 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "manifest_version": 3,
+  "name": "TextMind Pro",
+  "version": "2.0",
+  "description": "Professional AI-powered text assistant with multi-provider support. Select text for instant AI explanations, translations, and custom prompts using OpenAI, Claude, Gemini, or custom APIs.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "scripting",
+    "tabs",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background-enhanced.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "providers.js",
+        "content.js",
+        "theme-manager.js",
+        "ai-config.js",
+        "toolbar-enhancement.js",
+        "text-field-translator.js"
+      ],
+      "css": [
+        "style.css",
+        "styles/content.css"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icons/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "side_panel": {
+    "default_path": "popup-sidebar.html"
+  }
+}

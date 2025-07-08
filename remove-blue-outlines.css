@@ -1,0 +1,46 @@
+/* Remove all extension visual interference */
+
+/* Hide all extension overlays and UI elements */
+#sa-translation-overlay, #sa-restoration-overlay, #sa-translation-notification,
+[id*="sa-"], [class*="sa-"], .sa-overlay, .sa-highlight, .sa-selection, 
+.sa-tooltip, .sa-popup, .sa-extension-ui, .sa-notification {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* Remove extension-added styles from processed elements */
+[data-sa-processed], [data-translated], [data-sa-element] {
+    outline: none !important;
+    box-shadow: none !important;
+    background: initial !important;
+    background-color: initial !important;
+    border: initial !important;
+}
+
+/* Remove focus rings from extension elements */
+[class*="sa-"]:focus, [data-sa-processed]:focus, [data-translated]:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background: initial !important;
+}
+
+/* Hide all extension pseudo-elements */
+[class*="sa-"]::before, [class*="sa-"]::after,
+[data-sa-processed]::before, [data-sa-processed]::after,
+[id*="sa-"]::before, [id*="sa-"]::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+}
+
+/* Remove extension styles added to document head */
+style[data-sa-translation], style[data-sa-restoration], style[data-sa-notification] {
+    display: none !important;
+}

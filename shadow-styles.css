@@ -1,0 +1,873 @@
+/* Shadow DOM Styles */
+:host {
+  all: initial;
+  display: block;
+  contain: content;
+  font-family: var(--sa-font-family);
+
+  /* Apply theme variables directly to the host for its main styling */
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  border: 1px solid var(--sa-border-color);
+  box-shadow: var(--sa-shadow);
+  
+  /* Default structural styles for tooltip/chat dock, assuming they are the host */
+  /* These might need adjustment based on whether the host is the tooltip or an inner element */
+  /* If #select-act-tooltip is a child, then this needs to be different */
+  /* For now, assuming :host IS the tooltip/chat-dock main container */
+  position: fixed; /* Or var(--sa-position, fixed); if it needs to be dynamic */
+  z-index: 2147483647; /* Or var(--sa-z-index, 2147483647); */
+  width: var(--sa-tooltip-width); /* Default width */
+  /* transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; */ /* Moved to a general transition rule */
+}
+
+:host * {
+  box-sizing: border-box;
+  /* General transition for all elements within the shadow DOM */
+  transition-property: background-color, color, border-color, opacity, transform; /* Added opacity and transform */
+  transition-timing-function: ease;
+  transition-duration: 0.2s; /* Standardized duration */
+}
+
+/* Light mode colors (defaults) */
+:host {
+  --sa-primary-bg: #ffffff;
+  --sa-secondary-text: #333333;
+  --sa-accent: #2563eb;
+  --sa-accent-rgb: 37, 99, 235;
+  --sa-border-color: #e5e7eb;
+  --sa-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --sa-tooltip-width: 320px;
+  --sa-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --sa-input-height: 28px;
+  --sa-tooltip-max-height-collapsed: 40px;
+  --sa-chat-bg: #f9f9f9;
+  --sa-chat-header-bg: #f0f2f5;
+  --sa-chat-input-bg: #ffffff;
+  --sa-chat-user-bubble-bg: #2563eb;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #e9ecef;
+  --sa-chat-ai-bubble-text: #212529;
+  --sa-chat-system-bubble-bg: #f8f9fa;
+  --sa-chat-system-bubble-text: #6c757d;
+  --sa-chat-border-color: #dee2e6;
+  --sa-button-bg: #2563eb;
+  --sa-button-hover-bg: #1d4ed8;
+  --sa-button-text: #ffffff;
+}
+
+/* Dark mode colors for shadow DOM */
+:host([data-theme="dark"]) {
+  --sa-primary-bg: #1f2937;
+  --sa-secondary-text: #e5e7eb;
+  --sa-accent: #3b82f6;
+  --sa-accent-rgb: 59, 130, 246;
+  --sa-border-color: #374151;
+  --sa-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --sa-chat-bg: #111827;
+  --sa-chat-header-bg: #1f2937;
+  --sa-chat-input-bg: #374151;
+  --sa-chat-user-bubble-bg: #3b82f6;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #374151;
+  --sa-chat-ai-bubble-text: #e5e7eb;
+  --sa-chat-system-bubble-bg: #111827;
+  --sa-chat-system-bubble-text: #9ca3af;
+  --sa-chat-border-color: #4b5563;
+  --sa-button-bg: #3b82f6;
+  --sa-button-hover-bg: #2563eb;
+  --sa-button-text: #ffffff;
+}
+
+/* Blue theme */
+:host([data-theme="dark-blue"]) {
+  --sa-primary-bg: #0f172a;
+  --sa-secondary-text: #dbeafe;
+  --sa-accent: #60a5fa;
+  --sa-accent-rgb: 96, 165, 250;
+  --sa-border-color: #1e293b;
+  --sa-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  --sa-chat-bg: #0f172a;
+  --sa-chat-header-bg: #1e293b;
+  --sa-chat-input-bg: #1e293b;
+  --sa-chat-user-bubble-bg: #60a5fa;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #1e293b;
+  --sa-chat-ai-bubble-text: #dbeafe;
+  --sa-chat-system-bubble-bg: #0f172a;
+  --sa-chat-system-bubble-text: #93c5fd;
+  --sa-chat-border-color: #334155;
+  --sa-button-bg: #60a5fa;
+  --sa-button-hover-bg: #3b82f6;
+  --sa-button-text: #ffffff;
+}
+
+/* Purple theme */
+:host([data-theme="dark-purple"]) {
+  --sa-primary-bg: #1e1b4b;
+  --sa-secondary-text: #f3e8ff;
+  --sa-accent: #a855f7;
+  --sa-accent-rgb: 168, 85, 247;
+  --sa-border-color: #312e81;
+  --sa-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
+  --sa-chat-bg: #1e1b4b;
+  --sa-chat-header-bg: #312e81;
+  --sa-chat-input-bg: #312e81;
+  --sa-chat-user-bubble-bg: #a855f7;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #312e81;
+  --sa-chat-ai-bubble-text: #f3e8ff;
+  --sa-chat-system-bubble-bg: #1e1b4b;
+  --sa-chat-system-bubble-text: #c4b5fd;
+  --sa-chat-border-color: #4c1d95;
+  --sa-button-bg: #a855f7;
+  --sa-button-hover-bg: #9333ea;
+  --sa-button-text: #ffffff;
+}
+
+/* Green theme */
+:host([data-theme="dark-green"]) {
+  --sa-primary-bg: #052e16;
+  --sa-secondary-text: #f0fdf4;
+  --sa-accent: #22c55e;
+  --sa-accent-rgb: 34, 197, 94;
+  --sa-border-color: #14532d;
+  --sa-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+  --sa-chat-bg: #052e16;
+  --sa-chat-header-bg: #14532d;
+  --sa-chat-input-bg: #14532d;
+  --sa-chat-user-bubble-bg: #22c55e;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #14532d;
+  --sa-chat-ai-bubble-text: #f0fdf4;
+  --sa-chat-system-bubble-bg: #052e16;
+  --sa-chat-system-bubble-text: #86efac;
+  --sa-chat-border-color: #166534;
+  --sa-button-bg: #22c55e;
+  --sa-button-hover-bg: #16a34a;
+  --sa-button-text: #ffffff;
+}
+
+/* Orange theme */
+:host([data-theme="dark-orange"]) {
+  --sa-primary-bg: #431407;
+  --sa-secondary-text: #fff7ed;
+  --sa-accent: #f97316;
+  --sa-accent-rgb: 249, 115, 22;
+  --sa-border-color: #9a3412;
+  --sa-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+  --sa-chat-bg: #431407;
+  --sa-chat-header-bg: #9a3412;
+  --sa-chat-input-bg: #9a3412;
+  --sa-chat-user-bubble-bg: #f97316;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #9a3412;
+  --sa-chat-ai-bubble-text: #fff7ed;
+  --sa-chat-system-bubble-bg: #431407;
+  --sa-chat-system-bubble-text: #fed7aa;
+  --sa-chat-border-color: #c2410c;
+  --sa-button-bg: #f97316;
+  --sa-button-hover-bg: #ea580c;
+  --sa-button-text: #ffffff;
+}
+
+/* Rose theme */
+:host([data-theme="dark-rose"]) {
+  --sa-primary-bg: #4c0519;
+  --sa-secondary-text: #fff1f2;
+  --sa-accent: #f43f5e;
+  --sa-accent-rgb: 244, 63, 94;
+  --sa-border-color: #881337;
+  --sa-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);
+  --sa-chat-bg: #4c0519;
+  --sa-chat-header-bg: #881337;
+  --sa-chat-input-bg: #881337;
+  --sa-chat-user-bubble-bg: #f43f5e;
+  --sa-chat-user-bubble-text: #ffffff;
+  --sa-chat-ai-bubble-bg: #881337;
+  --sa-chat-ai-bubble-text: #fff1f2;
+  --sa-chat-system-bubble-bg: #4c0519;
+  --sa-chat-system-bubble-text: #fda4af;
+  --sa-chat-border-color: #be185d;
+  --sa-button-bg: #f43f5e;
+  --sa-button-hover-bg: #e11d48;
+  --sa-button-text: #ffffff;
+}
+
+/* Minimal theme */
+:host([data-theme="dark-minimal"]) {
+  --sa-primary-bg: #000000;
+  --sa-secondary-text: #f9fafb;
+  --sa-accent: #ffffff;
+  --sa-accent-rgb: 255, 255, 255;
+  --sa-border-color: #1f2937;
+  --sa-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  --sa-chat-bg: #000000;
+  --sa-chat-header-bg: #111111;
+  --sa-chat-input-bg: #1f2937;
+  --sa-chat-user-bubble-bg: #ffffff;
+  --sa-chat-user-bubble-text: #000000;
+  --sa-chat-ai-bubble-bg: #1f2937;
+  --sa-chat-ai-bubble-text: #f9fafb;
+  --sa-chat-system-bubble-bg: #000000;
+  --sa-chat-system-bubble-text: #d1d5db;
+  --sa-chat-border-color: #374151;
+  --sa-button-bg: #ffffff;
+  --sa-button-hover-bg: #f3f4f6;
+  --sa-button-text: #000000;
+}
+
+/* Shadow DOM specific element styles */
+/* These elements will inherit color from :host or have specific variable applications */
+:host .sa-message-content,
+:host .sa-copy-message-btn,
+:host .sa-chat-message,
+:host .sa-icon,
+:host .sa-tooltip-button,
+:host #sa-chat-header, /* This will use its own background variable */
+:host #sa-chat-history, /* This will use its own background variable */
+:host #sa-chat-input, /* This will use its own background variable */
+:host #sa-chat-input-area,
+:host #sa-chat-send-btn {
+  font-family: var(--sa-font-family);
+  /* color: inherit; */ /* Let specific variables or defaults take precedence */
+}
+
+/* Removed :host #select-act-tooltip and :host #select-act-chat-dock specific background/color overrides here,
+   as they should be handled by :host and its variables directly. */
+
+/* Ensure proper stacking context in shadow DOM */
+/* These might not be needed if :host already has position:fixed and z-index */
+/*
+:host #select-act-tooltip {
+  z-index: 2147483647;
+}
+
+:host #select-act-chat-dock {
+  z-index: 2147483646;
+}
+*/
+
+/* Ensure proper event handling in shadow DOM */
+:host * {
+  pointer-events: auto;
+}
+
+/* Ensure proper text selection in shadow DOM */
+:host ::selection {
+  background-color: rgba(var(--sa-accent-rgb), 0.3); /* Use accent color for selection */
+  color: inherit;
+}
+
+/* Ensure proper focus handling in shadow DOM */
+:host :focus {
+  outline: none;
+}
+
+/* Ensure proper scrolling behavior in shadow DOM */
+:host #sa-chat-history,
+:host #select-act-tooltip-output {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  background-color: var(--sa-chat-bg); /* Ensure chat history has its own background */
+  color: var(--sa-secondary-text); /* Ensure text color is consistent */
+}
+
+/* Ensure proper animation handling in shadow DOM */
+:host .sa-spinner {
+  will-change: transform;
+  border-color: var(--sa-border-color) transparent var(--sa-border-color) transparent;
+}
+
+/* Tooltip button styles that use theme variables */
+:host .sa-tooltip-button {
+  background: var(--sa-button-bg); /* Removed !important */
+  color: var(--sa-button-text); /* Removed !important */
+  border: 1px solid var(--sa-border-color); /* Removed !important */
+  border-radius: 4px; /* Removed !important */
+  padding: 4px 8px; /* Removed !important */
+  font-size: 12px; /* Removed !important */
+  cursor: pointer; /* Removed !important */
+  /* transition: all 0.2s ease !important; */ /* Covered by general :host * transition */
+  display: inline-flex; /* Removed !important */
+  align-items: center; /* Removed !important */
+  justify-content: center; /* Removed !important */
+  gap: 4px; /* Removed !important */
+}
+
+:host .sa-tooltip-button:hover {
+  background: var(--sa-button-hover-bg); /* Removed !important */
+  transform: translateY(-1px); /* Removed !important */
+  box-shadow: var(--sa-shadow); /* Removed !important */
+}
+
+:host .sa-tooltip-button:active {
+  transform: translateY(0); /* Removed !important */
+}
+
+/* Complete Tooltip and Toolbar Styles */
+
+/* Base Tooltip Styles */
+#select-act-tooltip {
+  position: fixed;
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  border: 1px solid var(--sa-border-color);
+  border-radius: 8px;
+  box-shadow: var(--sa-shadow);
+  z-index: 2147483647;
+  font-family: var(--sa-font-family);
+  font-size: 13px;
+  line-height: 1.4;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, transform 0.15s ease-out, visibility 0s linear 0.2s, max-height 0.2s ease-in-out;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  max-height: var(--sa-tooltip-max-height-collapsed);
+  overflow: hidden;
+}
+
+#select-act-tooltip.sa-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: opacity 0.2s ease-in-out, transform 0.15s ease-out, max-height 0.2s ease-in-out;
+}
+
+/* Adjust max-height for different states */
+#select-act-tooltip.sa-input-mode,
+#select-act-tooltip.sa-output-mode {
+    max-height: 400px;
+}
+#select-act-tooltip.sa-loading-mode {
+    max-height: var(--sa-tooltip-max-height-collapsed);
+    overflow: hidden;
+}
+
+/* Tooltip Sections */
+#select-act-tooltip-header,
+#select-act-tooltip-content,
+#select-act-tooltip-footer {
+  padding: 6px 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+#select-act-tooltip-header {
+  justify-content: flex-end;
+  border-bottom: none;
+  padding: 2px 8px;
+  display: none;
+  min-height: 15px;
+  gap: 8px;
+}
+
+#select-act-tooltip-content {
+  flex-grow: 1;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+#select-act-tooltip.sa-default-mode #select-act-tooltip-content,
+#select-act-tooltip.sa-input-mode #select-act-tooltip-content {
+    justify-content: flex-start;
+}
+
+#select-act-tooltip.sa-loading-mode #select-act-tooltip-content {
+    min-height: var(--sa-tooltip-max-height-collapsed);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#select-act-tooltip-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 12px;
+    border-top: none;
+    background: transparent;
+    min-height: 20px;
+    gap: 8px;
+}
+
+#select-act-tooltip-footer .sa-tooltip-button {
+    padding: 2px 6px;
+    height: 24px;
+    order: 1;
+}
+
+/* Button Styles */
+.sa-tooltip-button {
+  background-color: transparent;
+  color: var(--sa-secondary-text);
+  border: none;
+  border-radius: 4px;
+  padding: 4px 6px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: var(--sa-font-family);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+  line-height: 1.2;
+  min-height: 20px;
+}
+
+.sa-tooltip-button:hover {
+  background-color: var(--sa-accent);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.sa-tooltip-button:active {
+  transform: translateY(0);
+}
+
+.sa-tooltip-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.sa-tooltip-button:disabled:hover {
+  background-color: transparent;
+  color: var(--sa-secondary-text);
+}
+
+/* Button Groups */
+#select-act-tooltip-buttons-default {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 0 4px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Input Container */
+#select-act-tooltip-input-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  min-height: 32px;
+}
+
+.sa-input-button {
+  flex-shrink: 0;
+  padding: 4px 6px;
+  min-width: 24px;
+}
+
+#select-act-tooltip-input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px;
+  border: 1px solid var(--sa-border-color);
+  border-radius: 4px;
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  font-size: 12px;
+  font-family: var(--sa-font-family);
+  resize: none;
+  outline: none;
+  min-height: 24px;
+  max-height: 80px;
+}
+
+#select-act-tooltip-input:focus {
+  border-color: var(--sa-accent);
+  box-shadow: 0 0 0 2px rgba(var(--sa-accent-rgb), 0.2);
+}
+
+/* Output Area */
+#select-act-tooltip-output {
+  padding: 8px;
+  background-color: var(--sa-primary-bg);
+  color: var(--sa-secondary-text);
+  font-size: 12px;
+  line-height: 1.4;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 4px;
+  margin: 4px;
+  border: 1px solid var(--sa-border-color);
+}
+
+/* Loading Overlay */
+#select-act-tooltip-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(var(--sa-accent-rgb), 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* Spinner */
+.sa-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--sa-border-color);
+  border-top: 2px solid var(--sa-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.sa-spinner-small {
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Icons */
+.sa-icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Powered by section */
+.sa-powered-by {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--sa-secondary-text);
+  opacity: 0.7;
+  order: 2;
+}
+
+.sa-gemini-logo {
+  width: 12px;
+  height: 12px;
+}
+
+/* Chat Dock Styles */
+#select-act-chat-dock {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 400px;
+  height: 500px;
+  background-color: var(--sa-chat-bg);
+  border: 1px solid var(--sa-chat-border-color);
+  border-radius: 12px;
+  box-shadow: var(--sa-shadow);
+  z-index: 2147483646;
+  font-family: var(--sa-font-family);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+}
+
+#select-act-chat-dock.sa-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#sa-chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--sa-chat-header-bg);
+  border-bottom: 1px solid var(--sa-chat-border-color);
+  border-radius: 12px 12px 0 0;
+  cursor: grab;
+}
+
+#sa-chat-header:active {
+  cursor: grabbing;
+}
+
+.sa-chat-title-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sa-chat-logo {
+  width: 20px;
+  height: 20px;
+}
+
+#sa-chat-title {
+  font-weight: 500;
+  color: var(--sa-accent);
+  font-size: 14px;
+}
+
+.sa-chat-header-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+#sa-chat-history {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sa-chat-message {
+  position: relative;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  max-width: 85%;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 8px 12px;
+  border-radius: 12px;
+  word-wrap: break-word;
+}
+
+.sa-chat-message.sa-user {
+  background: var(--sa-chat-user-bubble-bg);
+  color: var(--sa-chat-user-bubble-text);
+  margin-left: auto;
+  margin-right: 5px;
+  border-radius: 12px 12px 0 12px;
+}
+
+.sa-chat-message.sa-ai {
+  background: var(--sa-chat-ai-bubble-bg);
+  color: var(--sa-chat-ai-bubble-text);
+  margin-right: auto;
+  margin-left: 5px;
+  border-radius: 12px 12px 12px 0;
+}
+
+.sa-chat-message.sa-system {
+  background: var(--sa-chat-system-bubble-bg);
+  color: var(--sa-chat-system-bubble-text);
+  margin: 7px auto;
+  max-width: 90%;
+  text-align: center;
+  font-size: 0.9em;
+  border-radius: 8px;
+  padding: 5px 8px;
+}
+
+#sa-chat-input-area {
+  padding: 12px;
+  border-top: 1px solid var(--sa-chat-border-color);
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+#sa-chat-input {
+  flex: 1;
+  min-height: 36px;
+  max-height: 100px;
+  padding: 8px 12px;
+  border: 1px solid var(--sa-chat-border-color);
+  border-radius: 8px;
+  background-color: var(--sa-chat-input-bg);
+  color: var(--sa-secondary-text);
+  font-size: 14px;
+  font-family: var(--sa-font-family);
+  resize: none;
+  outline: none;
+}
+
+#sa-chat-input:focus {
+  border-color: var(--sa-accent);
+  box-shadow: 0 0 0 2px rgba(var(--sa-accent-rgb), 0.2);
+}
+
+#sa-chat-send-btn {
+  flex-shrink: 0;
+  min-width: 36px;
+  height: 36px;
+  background-color: var(--sa-accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+#sa-chat-send-btn:hover {
+  background-color: var(--sa-button-hover-bg);
+  transform: translateY(-1px);
+}
+
+#sa-chat-send-btn:active {
+  transform: translateY(0);
+}
+
+#sa-chat-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Button loading states */
+.sa-btn-text,
+.sa-btn-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sa-btn-loader {
+  display: none;
+}
+
+#sa-chat-send-btn.loading .sa-btn-text {
+  display: none;
+}
+
+#sa-chat-send-btn.loading .sa-btn-loader {
+  display: flex;
+}
+
+/* Copy button states */
+.sa-button-copied {
+  background-color: var(--sa-success-color, #10b981) !important;
+  color: white !important;
+}
+
+/* Drag handle */
+#sa-chat-drag-handle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: grab;
+}
+
+#sa-chat-drag-handle:active {
+  cursor: grabbing;
+}
+
+/* Message copy buttons */
+.sa-copy-message-btn {
+  position: absolute;
+  bottom: -26px;
+  right: 0;
+  background: none !important;
+  border: none !important;
+  padding: 4px !important;
+  cursor: pointer !important;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 4px !important;
+  z-index: 1;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--sa-secondary-text) !important;
+}
+
+.sa-copy-message-btn:hover {
+  background: rgba(var(--sa-accent-rgb), 0.1) !important;
+}
+
+.sa-chat-message.sa-ai:hover .sa-copy-message-btn {
+  opacity: 1;
+}
+
+.sa-copy-message-btn.sa-button-copied {
+  opacity: 0;
+  background: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  #select-act-chat-dock {
+    right: 10px;
+    left: 10px;
+    width: auto;
+  }
+  
+  #select-act-tooltip {
+    max-width: calc(100vw - 20px);
+  }
+}
+
+/* Message content wrapper */
+.sa-message-content {
+  position: relative;
+  width: 100%;
+}
+
+/* Message minimization */
+.sa-message-minimized {
+  max-height: 100px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  transition: max-height 0.3s ease !important;
+}
+
+.sa-message-expanded {
+  max-height: none !important;
+}
+
+.sa-message-minimize-btn {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: linear-gradient(transparent, rgba(var(--sa-accent-rgb), 0.9)) !important;
+  color: white !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  font-size: 0.9em !important;
+  border: none !important;
+  width: 100% !important;
+  transition: opacity 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+}
+
+.sa-message-minimize-btn:hover {
+  opacity: 0.9 !important;
+}
+
+.sa-message-minimize-btn .sa-icon {
+  margin-top: 2px !important;
+}

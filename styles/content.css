@@ -1,0 +1,197 @@
+.sa-message-content {
+    position: relative;
+    width: 100%;
+}
+
+.sa-copy-message-btn {
+    position: absolute;
+    bottom: -26px;
+    right: 0;
+    background: none !important;
+    border: none !important;
+    padding: 4px !important;
+    cursor: pointer !important;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    border-radius: 4px !important;
+    z-index: 1;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--sa-secondary-text, #666) !important;
+}
+
+.sa-copy-message-btn:hover {
+    background: rgba(var(--sa-accent-rgb, 196, 195, 195), 0.1) !important;
+}
+
+.sa-chat-message.sa-ai {
+    /* Padding for hover effect */
+    position: relative;
+}
+
+.sa-chat-message.sa-ai:hover .sa-copy-message-btn {
+    opacity: 1;
+}
+
+.sa-copy-message-btn.sa-button-copied {
+    opacity: 0;
+    background: none !important;
+}
+
+.sa-copy-message-btn .sa-icon {
+    width: 14px !important;
+    height: 14px !important;
+    color: var(--sa-secondary-text, #666) !important;
+}
+
+.sa-copy-message-btn.copied {
+    opacity: 1;
+    background: none !important;
+}
+
+.sa-chat-message {
+    position: relative !important;
+    margin-bottom: 8px !important;
+    margin-top: 8px !important;
+    max-width: 85% !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+.sa-chat-message.sa-ai {
+    background: rgb(242, 242, 242) !important;
+    border-radius: 12px 12px 12px 0 !important;
+    padding: 1px 10px !important;
+    margin-right: auto !important;
+    margin-left: 5px !important;
+    /* margin-bottom: 8px !important; */
+    box-shadow: 0 1px 2px rgba(6, 6, 6, 0.31) !important;
+    color: #1a202c !important;
+}
+
+.sa-chat-message.sa-user {
+    background: #007bff !important;
+    border-radius: 12px 12px 0 12px !important;
+    padding: 1px 10px !important;
+    margin-left: auto !important;
+    margin-right: 5px !important;
+    color: white !important;
+    box-shadow: 0 1px 2px rgba(233, 233, 233, 0.19) !important;
+}
+
+.sa-chat-message.sa-system {
+    background: #f1f5f9 !important;
+    border-radius: 8px !important;
+    padding: 5px 5px !important;
+    font-size: 0.9em !important;
+    color: #64748b !important;
+    text-align: center !important;
+    margin: 7px auto !important;
+    max-width: 90% !important;
+}
+
+.sa-icon {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+.sa-tooltip-button .sa-icon {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+.sa-message-minimized {
+    max-height: 100px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    transition: max-height 0.3s ease !important;
+}
+
+.sa-message-expanded {
+    max-height: none !important;
+}
+
+.sa-message-minimize-btn {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: linear-gradient(transparent, rgba(0, 123, 255, 0.9)) !important;
+    color: white !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    font-size: 0.9em !important;
+    border: none !important;
+    width: 100% !important;
+    transition: opacity 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+}
+
+.sa-message-minimize-btn:hover {
+    opacity: 0.9 !important;
+}
+
+.sa-message-minimize-btn .sa-icon {
+    margin-top: 2px !important;
+}
+
+#sa-chat-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 8px 12px !important;
+    background: #f8fafc !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    border-radius: 8px 8px 0 0 !important;
+    cursor: grab !important;
+}
+
+#sa-chat-header:active {
+    cursor: grabbing !important;
+}
+
+.sa-chat-title-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.sa-chat-logo {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+#sa-chat-title {
+    font-weight: 500 !important;
+    color: #2563eb !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    font-size: 14px !important;
+}
+
+#sa-chat-history {
+    padding: 12px !important;
+    overflow-y: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    font-size: 14px !important;
+}
+
+#sa-chat-input {
+    width: 100% !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+    font-size: 14px !important;
+    resize: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: white !important;
+    color: #1a202c !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
